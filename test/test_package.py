@@ -28,6 +28,13 @@ class TestUserPackage():
 
     def tearDown(self):
         rmdir("toto_test_package")
+        
+    # pytest API
+    def setup_method(self):
+        self.setUp()
+        
+    def teardown_method(self):
+        self.tearDown()
 
     def test_case_1(self):
         metainfo = {'version': '0.0.1',

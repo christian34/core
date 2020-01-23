@@ -9,6 +9,7 @@ from .small_tools import test_dir
 
 
 class TestClass:
+    # nosetest
     def setUp(self):
         d = {}
         execfile(pj(test_dir(), 'catalog.py'), globals(), d)
@@ -19,6 +20,10 @@ class TestClass:
         self.string_node = self.pkg['string'].instantiate()
         self.pm = PackageManager()
         self.pm.add_package(self.pkg)
+
+    # pytest API
+    def setup_method(self):
+        self.setUp()
 
     def test_instantiate_compositenode(self):
         """test instantiation"""
